@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:fragment="head">
+  <meta charset="UTF-8">
+  <title th:text="${pageTitle}">TITLE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<header th:fragment="header">
+  <div>Header</div>
+</header>
+
+<!--<div th:fragment="items" class="items">-->
+<!--  <h3 th:text="|Recent sightings of ${squirrel.commonName}|">OTHER SIGHTINGS</h3>-->
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <th>Spotted By</th>-->
+<!--      <th>At</th>-->
+<!--      <th>On</th>-->
+<!--      <th>Number Spotted</th>-->
+<!--      <th>Temperature(F)</th>-->
+<!--    </tr>-->
+<!--    <tr th:each="si : ${sightingList}">-->
+<!--      <td th:text="${si.spotterName}">NAME</td>-->
+<!--      &lt;!&ndash;<td th:text="${si.locationId}">LOCATION</td>&ndash;&gt;-->
+<!--      <td th:text="${si.location.name}">LOCATION</td>-->
+<!--      &lt;!&ndash;<td th:text="${si.spottedAt}">DATE</td>&ndash;&gt;-->
+<!--      <td th:text="${#temporals.format(si.spottedAt, 'MMM dd yyyy hh:mm a')}">DATE</td>-->
+<!--      <td th:text="${si.count}">COUNT</td>-->
+<!--      <td th:text="${si.temperature}">TEMP</td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--  <h3><a th:href="@{/list}">Back to List</a></h3>-->
+<!--</div>-->
+
+<footer>
+  <div>footer</div>
+</footer>
+
+</body>
+</html>
