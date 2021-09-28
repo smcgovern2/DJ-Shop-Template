@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="frags :: head"></head>
+<body>
+<header th:replace="frags :: header"></header>
+
+<h3 th:text="|Overview of ${item.Name}|">Item</h3>
+
+<form th:action="@{/update}" method="post" th:object="${item}">
+
+</form>>
+
+</body>
+</html>

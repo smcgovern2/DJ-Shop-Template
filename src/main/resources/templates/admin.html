@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="frags :: head"></head>
+<body>
+<header th:replace="frags :: header"></header>
+
+
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Item Name</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="item : ${itemList}" class="item-listing">
+        <th><img th:src="@{/img/{file}(file=${item.imageFileName})}" th:alt="${item.name}" width="150" height="150"></th>
+        <th th:text="${item.name}"></th>
+        <th th:text="${item.price}"></th>
+        <th><button th:onclick="|document.location='@{/update(id=${item.id})}'|">Update</button></th>
+        <th><button th:onclick="|document.location='@{/delete(id=${item.id})}'|">Delete</button></th>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/add-item}">Add Item</a>

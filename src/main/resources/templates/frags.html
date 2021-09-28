@@ -9,10 +9,26 @@
 
 <body>
 
-<header th:fragment="header">
-  <div>Header</div>
-</header>
 
+<header>
+
+
+
+  <nav class="navbar navbar-light bg-light mb-5">
+
+    <div class="navbar-brand font-weight-bold h2">Idea Course for Learnings</div>
+    <ul class="nav nav-pills nav-fill">
+
+
+      <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+      <li class="nav-item"><a th:href="/catalog" class="nav-link">Step 1</a></li>
+      <li class="nav-item"><a href="/steptwo" class="nav-link">Step 2</a></li>
+      <li class="nav-item"><a href="/stepthree" class="nav-link">Step 3</a></li>
+    </ul>
+  </nav>
+
+
+</header>
 <!--<div th:fragment="items" class="items">-->
 <!--  <h3 th:text="|Recent sightings of ${squirrel.commonName}|">OTHER SIGHTINGS</h3>-->
 <!--  <table>-->

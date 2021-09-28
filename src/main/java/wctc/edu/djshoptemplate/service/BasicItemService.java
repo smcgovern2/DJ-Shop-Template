@@ -31,4 +31,17 @@ public class BasicItemService implements ItemService {
         itemRepository.findAll().forEach(list::add);
         return list;
     }
+
+    @Override
+    public void deleteItem(int itemID) {
+        Optional<Item> s = itemRepository.findById(itemID);
+        if (s.isPresent()) {
+            itemRepository.deleteById(itemID);
+        }
+    }
+
+    @Override
+    public void saveItem(Item item) {
+        itemRepository.save(item);
+    }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="frags :: head"></head>
+<body>
+<header th:replace="frags :: header"></header>
+
+<form th:action="@{/save}" method="post" th:object="${item}">
+
+    <label for="name">Item Name</label>
+    <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">NAME ERROR</span>
+    <br/>
+    <input type="text" id="name" th:field="*{name}">
+
+    <br/>
+
+    <label for="price">Price</label>
+    <span class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">PRICE ERROR</span>
+    <br/>
+    <input type="number" id="price" th:field="*{price}">
+
+    <br/>
+
+    <label for="description">Description</label>
+    <span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">DESC ERROR</span>
+    <br/>
+    <input type="text" id="description" th:field="*{description}">
+
+    <br/>
+
+    <label for="inventory">Inventory Count</label>
+    <span class="error" th:if="${#fields.hasErrors('inventory')}" th:errors="*{inventory}">INVENTORY ERROR</span>
+    <br/>
+    <input type="number" id="inventory" th:field="*{inventory}">
+
+    <br/>
+
+    <input type="submit" value="Add Item">
+</form>
+</body>
+</html>

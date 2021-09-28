@@ -26,7 +26,7 @@ public class CatalogController {
 
     @RequestMapping("/catalog")
     public String showCatalog(Model model){
-        model.addAttribute("pageTitle", "Pick a Squirrel");
+        model.addAttribute("pageTitle", "Catalog");
         model.addAttribute("itemList", itemService.getItemList());
 
         return "item-catalog";

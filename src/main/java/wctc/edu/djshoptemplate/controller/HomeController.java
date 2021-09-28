@@ -11,7 +11,7 @@ public class HomeController {
 
         @RequestMapping("/")
         public String showHomePage(Model model) {
-            model.addAttribute("pageTitle", "24/7 SquirrelWatch");
+            model.addAttribute("pageTitle", "Item Store");
             return "index";
         }
     }
