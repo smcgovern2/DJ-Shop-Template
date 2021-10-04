@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="frags :: head"></head>
-<body>
+
+<body class="bg-dark">
 <header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
 
 <form th:action="@{/save}" method="post" th:object="${item}">
 
@@ -34,7 +36,11 @@
 
     <br/>
 
+    <input type="hidden" name="imageFileName" th:field="*{imageFileName}" value="SampleItem1.jpg">
+
     <input type="submit" value="Add Item">
 </form>
+</div>
+
 </body>
 </html>

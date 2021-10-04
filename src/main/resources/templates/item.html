@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="frags :: head"></head>
-<body>
+<body class="bg-dark"></body>
 <header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
 
-<h3 th:text="|Overview of ${item.Name}|">Item</h3>
+<h3 th:text="${item.name}">Item Name</h3>
+<br>
+<img th:src="@{/img/{file}(file=${itemFileName})}" width="500" height="500"/>
+    <br>
+    <h5 th:text="item.description">Item Desc</h5>
+    <br>
+    <button th:onclick="|document.location='@{/add-to-cart(id=${item.id})}'|">Add to Cart</button>
 
+
+</div>
+<footer th:replace="frags :: footer"></footer>
 </body>
+
 </html>

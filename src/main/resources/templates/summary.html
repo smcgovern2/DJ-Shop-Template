@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="frags :: head"></head>
+<body class="bg-dark"></body>
+<header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
+
+    <h1>Success: Summary</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty.</th>
+                <th scope="col">Subtotal</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="item : ${itemList}" class="item-listing">
+                <th><img th:src="@{/img/{file}(file=${item.imageFileName})}" th:alt="${item.name}" width="150" height="150"></th>
+                <th th:text="${item.name}"></th>
+                <th th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 2,'POINT')}"></th>
+                <th th:text="${itemCount.get(item.id-1)}"></th>
+                <th th:text="${#numbers.formatDecimal(itemSubtotal.get(item.id-1), 0, 'COMMA', 2,'POINT')}"></th>
+            </tr>
+
+            </tbody>
+        </table>
+    <h2 th:text="|Total: ${#numbers.formatDecimal(itemTotalPrice, 0, 'COMMA', 2,'POINT')}|"></h2>
+
+
+
+
+</div>
+<footer th:replace="frags :: footer"></footer>
+</body>
+
+</html>

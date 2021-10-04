@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="frags :: head"></head>
-<body>
+<body class="bg-dark"></body>
 <header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
 
-
-
-
+    <form th:action="@{/checkout}" method="post" th:object="${cart}">
 <table class="table">
     <thead>
         <tr>
             <th scope="col"></th>
             <th scope="col">Item Name</th>
             <th scope="col">Price</th>
-            <th scope="col"></th>
+            <th scope="col">Qty.</th>
         </tr>
     </thead>
     <tbody>
@@ -21,26 +20,19 @@
         <tr th:each="item : ${itemList}" class="item-listing">
             <th><img th:src="@{/img/{file}(file=${item.imageFileName})}" th:alt="${item.name}" width="150" height="150"></th>
             <th th:text="${item.name}"></th>
-            <th th:text="${item.price}"></th>
-            <th><button th:onclick="|document.location='@{/item(id=${item.id})}'|">View</button></th>
+            <th th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 2,'POINT')}"></th>
+            <th>
+                <input type="hidden" th:name="|cartItemList[${item.id}].itemID|" th:value="${item.id}">
+                <input th:name="|cartItemList[${item.id}].quantity|" type="number" placeholder="0"/></th>
         </tr>
     </tbody>
 </table>
 
-<!--<div class="content">-->
-<!--    <div th:each="item : ${itemList}" class="item-listing">-->
-<!--        <h3 th:text="${sq.commonName}">COMMON NAME</h3>-->
-<!--        <p class="species" th:text="${sq.species}">SPECIES</p>-->
-<!--        <p class="habitat" th:text="${sq.habitat}">HABITAT</p>-->
-<!--        <img th:src="@{/img/sm/{file}(file=${sq.imageFileName})}" th:alt="${sq.commonName}">-->
-<!--        <br/>-->
-<!--        <button th:onclick="|document.location='@{/report(id=${sq.id})}'|">I Saw It!</button>-->
-<!--        <br/>-->
-<!--        <button th:onclick="|document.location='@{/sightings(id=${sq.id})}'|">Recent Sightings</button>-->
-<!--        <br/>-->
-<!--        <button th:onclick="|document.location='@{/delete(id=${sq.id})}'|">Fake Squirrel</button>-->
-<!--    </div>-->
-<!--</div>-->
+    <input type="submit" value="Checkout">
+</form>
 
+</div>
+    <footer th:replace="frags :: footer"></footer>
 </body>
+
 </html>

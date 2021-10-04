@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="frags :: head"></head>
+<body class="bg-dark"></body>
+<header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
+
+    <form th:action="@{/purchase}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty.</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="item : ${itemList}" class="item-listing">
+                <th><img th:src="@{/img/{file}(file=${item.imageFileName})}" th:alt="${item.name}" width="150" height="150"></th>
+                <th th:text="${item.name}"></th>
+                <th th:text="${#numbers.formatDecimal(0,2,item.price)}"></th>
+                <th><input th:id="${item.id}" type="number" placeholder="${item.quantity}"/></th>
+            </tr>
+            </tbody>
+        </table>
+
+        <input type="submit" value="Checkout">
+    </form>
+
+</div>
+<footer th:replace="frags :: footer"></footer>
+</body>
+
+</html>

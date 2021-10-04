@@ -52,8 +52,9 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult);
             model.addAttribute("pageTitle", "Add Item");
-            return "add-item";
+            return "index";
         }
+
 
         itemService.saveItem(item);
 
@@ -61,5 +62,13 @@ public class AdminController {
 
 
         return "forward:/admin";
+    }
+
+    @RequestMapping("/update")
+    public String showItem(Model model,
+                           @RequestParam("id") int itemId) {
+        model.addAttribute("pageTitle", "Update " + itemService.getItem(itemId).getName());
+        model.addAttribute("item", itemService.getItem(itemId));
+        return "update";
     }
 }

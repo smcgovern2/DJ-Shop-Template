@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:replace="frags :: head"></head>
-<body>
+
+<body class="bg-dark"></body>
 <header th:replace="frags :: header"></header>
+<div class="container body-content bg-light py-4">
 
 <h3 th:text="|Overview of ${item.Name}|">Item</h3>
 
-<form th:action="@{/update}" method="post" th:object="${item}">
+<form th:action="@{/save}" method="post" th:object="${item}">
+    <input name="id" type="hidden" th:value="${item.id}">
+    <input name="name" type="hidden" th:value="${item.name}">
+    <input name="description" type="hidden"  th:value="${item.description}">
+    <input name="imageFileName" type="hidden" th:value="${item.imageFileName}">
 
-</form>>
+    <label for="inventory">Quantity</label>
+    <input id="inventory" name="inventory" type="number" th:Value="${item.inventory}">
 
+    <br>
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number" th:Value="${#numbers.formatDecimal(item.price, 0, 2,'POINT')}">
+    <input type="submit" value="submit">
+</form>
+</div>
+<footer th:replace="frags :: footer"></footer>
 </body>
+
 </html>
